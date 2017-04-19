@@ -1,5 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 
+import './style/NoteEditor.less'
+
 export default class NoteEditor extends Component {
     constructor(props) {
         super(props);

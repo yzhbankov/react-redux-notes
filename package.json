@@ -21,6 +21,7 @@
     "path": "^0.12.7",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-masonry-component": "^5.0.5",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0"
   },
@@ -30,6 +31,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.0",
     "json-loader": "^0.5.4",
+    "less": "^2.7.2",
     "less-loader": "^4.0.3",
     "style-loader": "^0.16.1",
     "webpack": "^2.4.1"
