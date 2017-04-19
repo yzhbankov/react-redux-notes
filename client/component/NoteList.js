@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, {Component, PropTypes} from 'react'
 import Masonry from 'react-masonry-component';
 import Note from './Note'
 
@@ -17,7 +17,7 @@ export default class NoteList extends Component {
                 <h1 className="NotesListTitle">My notes</h1>
                 <Masonry
                     options={masonryOptions}>
-                    {/*{this.props.notes.map(note =>
+                    {this.props.notes.map(note =>
                         <Note
                             key={note.id}
                             title={note.title}
@@ -25,9 +25,13 @@ export default class NoteList extends Component {
                             onDelete={this.props.noteDelete.bind(null, note)}
                             text={note.text}>
                         </Note>
-                    )}*/}
+                    )}
                 </Masonry>
             </div>
         )
     }
+}
+
+NoteList.PropTypes = {
+    notes: PropTypes.array.isRequired
 }

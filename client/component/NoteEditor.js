@@ -46,7 +46,6 @@ export default class NoteEditor extends Component {
     }
 
     render() {
-        console.log(this.state);
         return <div className="NoteEditor">
             <div>
                 <input
