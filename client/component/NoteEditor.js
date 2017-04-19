@@ -1,20 +1,24 @@
-import React, { Component, PropTypes } from 'react'
+import React, {Component, PropTypes} from 'react'
 
 export default class NoteEditor extends Component {
-    getInitialState(){
-        return {
+    constructor(props) {
+        super(props);
+        this.state = {
             title: '',
             text: '',
             color: 'white'
-        }
+        };
     }
-    handleTitleChange(event){
+
+    handleTitleChange(event) {
         this.setState({"title": event.target.value});
     }
-    handleTextChange(event){
+
+    handleTextChange(event) {
         this.setState({"text": event.target.value});
     }
-    handleColorChange(event){
+
+    handleColorChange(event) {
         document.querySelectorAll('.colorPicker').forEach(function (item) {
             item.removeAttribute('id');
         });
@@ -24,20 +28,23 @@ export default class NoteEditor extends Component {
             color: event.target.getAttribute('data-color')
         })
     }
-    handleNoteAdd(){
+
+    handleNoteAdd() {
         const newNote = {
             title: this.state.title,
             text: this.state.text,
             color: this.state.color
         };
-        this.props.noteAdd(newNote);  // this is function from props of App
+        //this.props.noteAdd(newNote);  // this is function from props of App
         this.setState({
             title: '',
             text: '',
             color: 'white'
         });
     }
+
     render() {
+        console.log(this.state);
         return <div className="NoteEditor">
             <div>
                 <input
@@ -45,7 +52,7 @@ export default class NoteEditor extends Component {
                     type='text'
                     placeholder='Enter title'
                     value={this.state.title}
-                    onChange={this.handleTitleChange}></input>
+                    onChange={this.handleTitleChange.bind(this)}></input>
             </div>
             <div>
                 <input
@@ -53,41 +60,41 @@ export default class NoteEditor extends Component {
                     type='text'
                     placeholder='Enter text'
                     value={this.state.text}
-                    onChange={this.handleTextChange}></input>
+                    onChange={this.handleTextChange.bind(this)}></input>
             </div>
             <div className='NoteEditorColor'>
                 <div
                     className='colorPicker NoteEditorColorWhite'
                     data-color='white'
                     id='activeColorBtn'
-                    onClick={this.handleColorChange}></div>
+                    onClick={this.handleColorChange.bind(this)}></div>
                 <div
                     className='colorPicker NoteEditorColorRed'
                     data-color='#ff0000'
-                    onClick={this.handleColorChange}></div>
+                    onClick={this.handleColorChange.bind(this)}></div>
                 <div
                     className='colorPicker NoteEditorColorOrange'
                     data-color='#ff8000'
-                    onClick={this.handleColorChange}></div>
+                    onClick={this.handleColorChange.bind(this)}></div>
                 <div
                     className='colorPicker NoteEditorColorGreen'
                     data-color='#bfff00'
-                    onClick={this.handleColorChange}></div>
+                    onClick={this.handleColorChange.bind(this)}></div>
                 <div
                     className='colorPicker NoteEditorColorBlue'
                     data-color='#00ffff'
-                    onClick={this.handleColorChange}></div>
+                    onClick={this.handleColorChange.bind(this)}></div>
                 <div
                     className='colorPicker NoteEditorColorMagento'
                     data-color='#bf00ff'
-                    onClick={this.handleColorChange}></div>
+                    onClick={this.handleColorChange.bind(this)}></div>
             </div>
 
             <div>
                 <button
                     className="NoteEditorBtn"
                     disabled={(!this.state.text) || (!this.state.title)}
-                    onClick={this.handleNoteAdd}>
+                    onClick={this.handleNoteAdd.bind(this)}>
                     Add
                 </button>
             </div>
