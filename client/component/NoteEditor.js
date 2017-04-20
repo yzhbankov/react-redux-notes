@@ -37,7 +37,7 @@ export default class NoteEditor extends Component {
             text: this.state.text,
             color: this.state.color
         };
-        //this.props.noteAdd(newNote);  // this is function from props of App
+        this.props.addNote(newNote);
         this.setState({
             title: '',
             text: '',

@@ -5,6 +5,8 @@ import Note from './Note'
 import './style/NoteList.less'
 
 export default class NoteList extends Component {
+
+
     render() {
         const masonryOptions = {
             itemSelector: '.Note',
@@ -13,18 +15,18 @@ export default class NoteList extends Component {
             isFitWidth: true
         };
         return (
-            <div>
+            <div className="NotesList">
                 <h1 className="NotesListTitle">My notes</h1>
                 <Masonry
                     options={masonryOptions}>
                     {this.props.notes.map(note =>
-                        <Note
-                            key={note.id}
-                            title={note.title}
-                            color={note.color}
-                            onDelete={this.props.noteDelete.bind(null, note)}
-                            text={note.text}>
-                        </Note>
+                            <Note
+                                key={note.id}
+                                title={note.title}
+                                color={note.color}
+                                onDelete={this.props.noteDelete.bind(null, note._id)}
+                                text={note.text}>
+                            </Note>
                     )}
                 </Masonry>
             </div>

@@ -11,7 +11,6 @@ export function getNotes() {
         dispatch({
             type: GET_NOTES_REQUEST
         });
-
         api.listNotes()
             .then(data => {
                 dispatch({
@@ -25,6 +24,29 @@ export function getNotes() {
                     payload: err,
                     error: true
                 })
+            })
+    }
+}
+export function addNote(data) {
+    return (dispatch) => {
+        api.addNote(data)
+            .then(() => {
+                dispatch(getNotes())
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }
+}
+
+export function deleteNote(id) {
+    return (dispatch) => {
+        api.deleteNote(id)
+            .then(() => {
+                dispatch(getNotes())
+            })
+            .catch(err => {
+                console.error(err)
             })
     }
 }

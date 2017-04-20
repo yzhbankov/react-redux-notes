@@ -14,7 +14,7 @@ export default function notesReducer(state = initialState, action) {
         case GET_NOTES_REQUEST:
             return Object.assign({}, state, {isLoading: true})
         case GET_NOTES_SUCCESS:
-            return Object.assign({}, state, {notes: action.payload, isLoading: false})
+            return Object.assign({}, state, {notes: action.payload.data, isLoading: false})
         case GET_NOTES_FAILURE:
             return Object.assign({}, state, {error: action.payload, isLoading: false})
         default:

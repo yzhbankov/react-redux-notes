@@ -5,16 +5,19 @@ import * as NoteActions from '../actions/NotesActions'
 
 import NoteEditor from '../component/NoteEditor.js'
 import NoteList from '../component/NoteList.js'
+import '../component/style/App.less'
 
 class App extends Component {
     componentWillMount() {
-        this.props.getNotes.getNotes()
+        this.props.getNotesAction.getNotes();
     }
 
     render() {
         return (<div>
-                <NoteEditor />
-                <NoteList notes={this.props.notes} isLoading={this.props.isLoading}/>
+                <div className='AppTitle'>Notes Application based on React/Redux technologies</div>
+                <NoteEditor addNote={this.props.getNotesAction.addNote}/>
+                <NoteList notes={this.props.notes} isLoading={this.props.isLoading}
+                          noteDelete={this.props.getNotesAction.deleteNote}/>
             </div>
         )
     }
@@ -29,7 +32,7 @@ function stateToComponent(state) {
 
 function dispatchToComponent(dispatch) {
     return {
-        getNotes: bindActionCreators(NoteActions, dispatch)
+        getNotesAction: bindActionCreators(NoteActions, dispatch)
     }
 }
 
