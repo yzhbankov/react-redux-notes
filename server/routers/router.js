@@ -5,7 +5,7 @@ import * as db from '../utils/dbutils.js'
 const router = express.Router();
 
 router.get('/', (req, res)=> {
-    res.send('Hello');
+    res.render('public/index.html');
 });
 
 router

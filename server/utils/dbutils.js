@@ -4,7 +4,7 @@ import '../models/noteModel.js'
 const Note = mongoose.model('Note');
 
 export function setUpConnect() {
-    mongoose.connect('mongodb://localhost:27017/notes');
+    mongoose.connect('mongodb://iaroslav:13606524@ds147900.mlab.com:47900/heroku_7mlgjgmk');
 }
 
 export function listNotes() {

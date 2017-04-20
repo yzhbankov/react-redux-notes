@@ -1,5 +1,8 @@
 import express from 'express'
 import bodyParser from 'body-parser'
+import path from 'path';
+import ejs from 'ejs';
+
 import router from './routers/router.js'
 import * as db from './utils/dbutils.js'
 
@@ -16,8 +19,13 @@ app.use((req, res, next) => {
     return next();
 });
 
+app.use(express.static(path.join(__dirname, '..', 'public')));
+app.engine('.html', ejs.__express);
+app.set('views', path.join(__dirname, '..', 'public'));
+app.set('view engine', 'html');
+
 app.use('/', router);
 
-const server = app.listen(8000, ()=> {
+const server = app.listen(process.env.PORT || 8000, ()=> {
     console.log('Server is running on port 8000')
 });
